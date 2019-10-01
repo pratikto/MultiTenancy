@@ -13,5 +13,9 @@ namespace MultiTenancy.Administration
 
         [Description("Languages and Translations")]
         public const string Translation = "Administration:Translation";
+
+        //define a Administration:Tenants permission that only admin user will have
+        [Description("Tenants")]
+        public const string Tenants = "Administration:Tenants";
     }
 }
