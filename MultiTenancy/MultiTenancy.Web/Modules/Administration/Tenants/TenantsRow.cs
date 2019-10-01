@@ -9,7 +9,7 @@ namespace MultiTenancy.Administration.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), Module("Administration"), TableName("[dbo].[Tenants]")]
+    [ConnectionKey("Default"), Module("Administration"), TableName("[dbo].[Tenants]"), TwoLevelCached]
     [DisplayName("Tenants"), InstanceName("Tenants")]
     [ReadPermission("Administration:Tenants")]
     [ModifyPermission("Administration:Tenants")]
