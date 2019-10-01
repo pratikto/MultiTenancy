@@ -157,6 +157,74 @@ var MultiTenancy;
 (function (MultiTenancy) {
     var Administration;
     (function (Administration) {
+        var TenantsForm = /** @class */ (function (_super) {
+            __extends(TenantsForm, _super);
+            function TenantsForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TenantsForm.formKey = 'Administration.Tenants';
+            return TenantsForm;
+        }(Serenity.PrefixedContext));
+        Administration.TenantsForm = TenantsForm;
+        [,
+            ['TenantName', function () { return Serenity.StringEditor; }]
+        ].forEach(function (x) { return Object.defineProperty(TenantsForm.prototype, x[0], {
+            get: function () {
+                return this.w(x[0], x[1]());
+            },
+            enumerable: true,
+            configurable: true
+        }); });
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
+        var TenantsRow;
+        (function (TenantsRow) {
+            TenantsRow.idProperty = 'TenantId';
+            TenantsRow.nameProperty = 'TenantName';
+            TenantsRow.localTextPrefix = 'Administration.Tenants';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TenantsRow.Fields || (TenantsRow.Fields = {}));
+            [
+                'TenantId',
+                'TenantName'
+            ].forEach(function (x) { return Fields[x] = x; });
+        })(TenantsRow = Administration.TenantsRow || (Administration.TenantsRow = {}));
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
+        var TenantsService;
+        (function (TenantsService) {
+            TenantsService.baseUrl = 'Administration/Tenants';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TenantsService.Methods || (TenantsService.Methods = {}));
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TenantsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TenantsService.baseUrl + '/' + x, r, s, o);
+                };
+                Methods[x] = TenantsService.baseUrl + '/' + x;
+            });
+        })(TenantsService = Administration.TenantsService || (Administration.TenantsService = {}));
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
         var TranslationService;
         (function (TranslationService) {
             TranslationService.baseUrl = 'Administration/Translation';
@@ -1841,6 +1909,52 @@ var MultiTenancy;
 (function (MultiTenancy) {
     var Administration;
     (function (Administration) {
+        var TenantsDialog = /** @class */ (function (_super) {
+            __extends(TenantsDialog, _super);
+            function TenantsDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Administration.TenantsForm(_this.idPrefix);
+                return _this;
+            }
+            TenantsDialog.prototype.getFormKey = function () { return Administration.TenantsForm.formKey; };
+            TenantsDialog.prototype.getIdProperty = function () { return Administration.TenantsRow.idProperty; };
+            TenantsDialog.prototype.getLocalTextPrefix = function () { return Administration.TenantsRow.localTextPrefix; };
+            TenantsDialog.prototype.getNameProperty = function () { return Administration.TenantsRow.nameProperty; };
+            TenantsDialog.prototype.getService = function () { return Administration.TenantsService.baseUrl; };
+            TenantsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TenantsDialog);
+            return TenantsDialog;
+        }(Serenity.EntityDialog));
+        Administration.TenantsDialog = TenantsDialog;
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
+        var TenantsGrid = /** @class */ (function (_super) {
+            __extends(TenantsGrid, _super);
+            function TenantsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TenantsGrid.prototype.getColumnsKey = function () { return 'Administration.Tenants'; };
+            TenantsGrid.prototype.getDialogType = function () { return Administration.TenantsDialog; };
+            TenantsGrid.prototype.getIdProperty = function () { return Administration.TenantsRow.idProperty; };
+            TenantsGrid.prototype.getLocalTextPrefix = function () { return Administration.TenantsRow.localTextPrefix; };
+            TenantsGrid.prototype.getService = function () { return Administration.TenantsService.baseUrl; };
+            TenantsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TenantsGrid);
+            return TenantsGrid;
+        }(Serenity.EntityGrid));
+        Administration.TenantsGrid = TenantsGrid;
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
         var TranslationGrid = /** @class */ (function (_super) {
             __extends(TranslationGrid, _super);
             function TranslationGrid(container) {
@@ -3445,51 +3559,6 @@ var MultiTenancy;
     var BasicSamples;
     (function (BasicSamples) {
         /**
-         * Styling for columns is done with CSS in site.basicsamples.less file.
-         * When comparing this to MultiColumnDialog sample, you may notice that
-         * this version requires much less JS and CSS code.
-         */
-        var MultiColumnResponsiveDialog = /** @class */ (function (_super) {
-            __extends(MultiColumnResponsiveDialog, _super);
-            function MultiColumnResponsiveDialog() {
-                return _super.call(this) || this;
-            }
-            MultiColumnResponsiveDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MultiColumnResponsiveDialog);
-            return MultiColumnResponsiveDialog;
-        }(MultiTenancy.Northwind.OrderDialog));
-        BasicSamples.MultiColumnResponsiveDialog = MultiColumnResponsiveDialog;
-    })(BasicSamples = MultiTenancy.BasicSamples || (MultiTenancy.BasicSamples = {}));
-})(MultiTenancy || (MultiTenancy = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var MultiTenancy;
-(function (MultiTenancy) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to MultiColumnResponsiveDialog
-         */
-        var MultiColumnResponsiveGrid = /** @class */ (function (_super) {
-            __extends(MultiColumnResponsiveGrid, _super);
-            function MultiColumnResponsiveGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MultiColumnResponsiveGrid.prototype.getDialogType = function () { return BasicSamples.MultiColumnResponsiveDialog; };
-            MultiColumnResponsiveGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MultiColumnResponsiveGrid);
-            return MultiColumnResponsiveGrid;
-        }(MultiTenancy.Northwind.OrderGrid));
-        BasicSamples.MultiColumnResponsiveGrid = MultiColumnResponsiveGrid;
-    })(BasicSamples = MultiTenancy.BasicSamples || (MultiTenancy.BasicSamples = {}));
-})(MultiTenancy || (MultiTenancy = {}));
-/// <reference path="../../../Northwind/Order/OrderDialog.ts" />
-var MultiTenancy;
-(function (MultiTenancy) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
          * Our custom order dialog subclass that will have a tab to display and edit selected customer details.
          */
         var OtherFormInTabDialog = /** @class */ (function (_super) {
@@ -4013,55 +4082,6 @@ var MultiTenancy;
             return ReadOnlyGrid;
         }(MultiTenancy.Northwind.SupplierGrid));
         BasicSamples.ReadOnlyGrid = ReadOnlyGrid;
-    })(BasicSamples = MultiTenancy.BasicSamples || (MultiTenancy.BasicSamples = {}));
-})(MultiTenancy || (MultiTenancy = {}));
-var MultiTenancy;
-(function (MultiTenancy) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Adding Responsive attribute makes this dialog use full screen in mobile devices.
-         */
-        var ResponsiveDialog = /** @class */ (function (_super) {
-            __extends(ResponsiveDialog, _super);
-            function ResponsiveDialog() {
-                return _super.call(this) || this;
-            }
-            ResponsiveDialog.prototype.getFormKey = function () { return MultiTenancy.Northwind.OrderForm.formKey; };
-            ResponsiveDialog.prototype.getIdProperty = function () { return MultiTenancy.Northwind.OrderRow.idProperty; };
-            ResponsiveDialog.prototype.getLocalTextPrefix = function () { return MultiTenancy.Northwind.OrderRow.localTextPrefix; };
-            ResponsiveDialog.prototype.getNameProperty = function () { return MultiTenancy.Northwind.OrderRow.nameProperty; };
-            ResponsiveDialog.prototype.getService = function () { return MultiTenancy.Northwind.OrderService.baseUrl; };
-            ResponsiveDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive(),
-                Serenity.Decorators.maximizable()
-            ], ResponsiveDialog);
-            return ResponsiveDialog;
-        }(Serenity.EntityDialog));
-        BasicSamples.ResponsiveDialog = ResponsiveDialog;
-    })(BasicSamples = MultiTenancy.BasicSamples || (MultiTenancy.BasicSamples = {}));
-})(MultiTenancy || (MultiTenancy = {}));
-/// <reference path="../../../Northwind/Order/OrderGrid.ts" />
-var MultiTenancy;
-(function (MultiTenancy) {
-    var BasicSamples;
-    (function (BasicSamples) {
-        /**
-         * Subclass of OrderGrid to override dialog type to ResponsiveDialog
-         */
-        var ResponsiveGrid = /** @class */ (function (_super) {
-            __extends(ResponsiveGrid, _super);
-            function ResponsiveGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ResponsiveGrid.prototype.getDialogType = function () { return BasicSamples.ResponsiveDialog; };
-            ResponsiveGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ResponsiveGrid);
-            return ResponsiveGrid;
-        }(MultiTenancy.Northwind.OrderGrid));
-        BasicSamples.ResponsiveGrid = ResponsiveGrid;
     })(BasicSamples = MultiTenancy.BasicSamples || (MultiTenancy.BasicSamples = {}));
 })(MultiTenancy || (MultiTenancy = {}));
 var MultiTenancy;

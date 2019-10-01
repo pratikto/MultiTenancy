@@ -1815,6 +1815,12 @@
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleGrid.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleDialog.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantsRow.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantsService.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <Content Include="Modules\Administration\Tenants\TenantsIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Administration\Tenants\TenantsDialog.ts" />
+    <TypeScriptCompile Include="Modules\Administration\Tenants\TenantsGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantsForm.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2135,6 +2141,12 @@
     <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleForm.cs" />
     <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleRepository.cs" />
     <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleEndpoint.cs" />
+    <Compile Include="Modules\Administration\Tenants\TenantsRow.cs" />
+    <Compile Include="Modules\Administration\Tenants\TenantsRepository.cs" />
+    <Compile Include="Modules\Administration\Tenants\TenantsEndpoint.cs" />
+    <Compile Include="Modules\Administration\Tenants\TenantsPage.cs" />
+    <Compile Include="Modules\Administration\Tenants\TenantsColumns.cs" />
+    <Compile Include="Modules\Administration\Tenants\TenantsForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
