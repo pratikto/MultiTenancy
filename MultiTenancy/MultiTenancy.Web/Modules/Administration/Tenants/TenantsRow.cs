@@ -13,6 +13,7 @@ namespace MultiTenancy.Administration.Entities
     [DisplayName("Tenants"), InstanceName("Tenants")]
     [ReadPermission("Administration:Tenants")]
     [ModifyPermission("Administration:Tenants")]
+    [LookupScript("Administration.Tenant")]
     public sealed class TenantsRow : Row, IIdRow, INameRow
     {
         [DisplayName("Tenant Id"), Identity]
